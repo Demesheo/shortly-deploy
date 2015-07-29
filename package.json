@@ -27,7 +27,7 @@
     "knex": "~0.5.7",
     "mocha": "^1.17.1",
     "mongoose": "^3.8.34",
-    "request": "^2.34.0",
+    "request": "^2.34.0"
   },
   "devDependencies": {
     "supertest": "^0.10.0"
