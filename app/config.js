@@ -52,15 +52,16 @@ var mongoose = require('mongoose');
 // });
 
 //////////////////////NEW IMPLEMENTATION//////////////////////////
+mongoose.connect('mongodb://localhost/db');
 
-var db = mongoose.connection();
+var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
 });
 
-var chatSchema = mongoose.Shcema({
-  user: 
-
-})
+var userSchema = mongoose.Schema({
+  username: String,
+  password: String
+});
 
 module.exports = db;
