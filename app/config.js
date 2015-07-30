@@ -4,12 +4,16 @@ var path = require('path');
 var grunt = require('grunt');
 var test = 'test';
 
+
+var connectionString = process.env.CUSTOMCONNSTR_MONGOLAB_URI;
+mongoose.connect(connectionString);
+
 ///////////////Old DB initialize//////////////////
 
 var db = Bookshelf.initialize({
   client: 'sqlite3',
   connection: {
-    host: '127.0.0.1',
+    host: 'process.env.CUSTOMCONNSTR_MONGOLAB_URI',
     user: 'your_database_user',
     password: 'password',
     database: 'shortlydb',
@@ -66,4 +70,4 @@ db.knex.schema.hasTable('users').then(function(exists) {
 //   password: String
 // });
 
-// module.exports = db;
+module.exports = db;
