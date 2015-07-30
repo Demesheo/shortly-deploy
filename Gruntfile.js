@@ -21,11 +21,20 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+   dist: {
+      options: {
+         sourceMap: true,
+         banner: '/*! Team Us*/'
+      },
+      files: {
+         'public/dist/output.min.js': ['./*/*.js'],
+      }
+      }    
     },
 
     jshint: {
       files: [
-        // Add filespec list here
+        './*/*.js'
       ],
       options: {
         force: 'true',
@@ -38,6 +47,7 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      files: 'public/*.css'
     },
 
     watch: {
@@ -105,7 +115,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
-    // add your deploy tasks here
+    'jshint', 'uglify', 'cssmin', 'watch' 
   ]);
 
 

@@ -1,8 +1,8 @@
-var db = require('../config');
+var db = require('../config.js');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
 
-var User = db.model('User', userSchema)
+var User = db.model('User', db.userSchema)
 // ({
 //   tableName: 'users',
 //   hasTimestamps: true,
