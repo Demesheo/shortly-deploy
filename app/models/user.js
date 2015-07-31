@@ -9,8 +9,6 @@ var UserSchema = mongoose.Schema({
 	password  : {type : String, required : true } 
 });
 
-UserSchema.on('init', UserSchema.hashPassword());
-
 var User = mongoose.model( 'User', UserSchema );
 
 User.prototype.comparePassword = function(attemptedPassword, callback) {

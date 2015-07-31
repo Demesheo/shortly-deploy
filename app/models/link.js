@@ -12,7 +12,7 @@ var LinkSchema = mongoose.Schema({
   url : String
 });
 
-var Link = mongoose.model('Link', linkSchema);
+var Link = mongoose.model('Link', LinkSchema);
 
 var createSha = function (url){
   var shasum = crypto.createHash('sha1');
@@ -20,7 +20,7 @@ var createSha = function (url){
   return shasum.digest('hex').slice(0, 5);
 };
 
-linkSchema.pre('save', function (next){
+LinkSchema.pre('save', function (next){
   var code = createSha(this.url);
   this.code = code;
   next();
