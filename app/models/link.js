@@ -1,12 +1,9 @@
 var db = require('../config');
 var crypto = require('crypto');
+var mongoose = require('mongoose'),
+  Schema = mongoose.Schema;
 
-var Link = db.Model.extend({
-  tableName: 'urls',
-  hasTimestamps: true,
-  defaults: {
-    visits: 0
-  },
+var LinkSchema= db.Model.extend({
   initialize: function(){
     this.on('creating', function(model, attrs, options){
       var shasum = crypto.createHash('sha1');
@@ -16,4 +13,6 @@ var Link = db.Model.extend({
   }
 });
 
-module.exports = Link;
+LinkSchema.on('init', LinkSchema.initialize());
+
+module.exports = mongoose.model('Link', LinkSchema);
